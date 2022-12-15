@@ -10,10 +10,23 @@
 // destructivelyUpdateEmployeeWithKeyAndValue(): this function should work the same as updateEmployeeWithKeyAndValue() but it should mutate the employee Object passed in.
 // deleteFromEmployeeByKey(): this function should take in a employee Object and a key. It should delete the property with that key from the employee Object. This should not mutate the original employee Object; it should return a new Object that doesn't include the identified key-value pair. Hint: use the spread operator!
 // destructivelyDeleteFromEmployeeByKey(): this function should work the same as deleteFromEmployeeByKey() but it should mutate the employee Object.
-let employee ={}
-function updateEmployee(){
-    employee.name = "Sam"; 
-    employee.streetAddress = '11 Broadway';
-    console.log(employee.name)
+let employee = { name: "", streetAddress: "" };
+
+function updateEmployeeWithKeyAndValue(employee, key, value) {
+  let cloneEmp = { ...employee };
+  cloneEmp[key] = value;
+  return cloneEmp;
 }
-updateEmployee("Elis","4218 Ottawa")
+function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value) {
+  employee[key] = value;
+  return employee;
+}
+function deleteFromEmployeeByKey(employee, key) {
+  let cloneEmp = { ...employee };
+  cloneEmp[key] = undefined;
+  return cloneEmp;
+}
+function destructivelyDeleteFromEmployeeByKey(employee, key) {
+  employee[key] = undefined;
+  return employee;
+}
